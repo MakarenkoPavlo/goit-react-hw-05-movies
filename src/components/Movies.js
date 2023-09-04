@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Movies = () => {
@@ -8,7 +7,7 @@ const Movies = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get('https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1'); 
+      const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ВАШ_API_КЛЮЧ&query=${searchQuery}`);
       setSearchResults(response.data.results);
     } catch (error) {
       console.error('Error searching movies:', error);
@@ -26,9 +25,7 @@ const Movies = () => {
       <button onClick={handleSearch}>Search</button>
       <ul>
         {searchResults.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-          </li>
+          <li key={movie.id}>{movie.title}</li>
         ))}
       </ul>
     </div>

@@ -9,7 +9,7 @@ const Reviews = () => {
   useEffect(() => {
     const fetchMovieReviews = async () => {
       try {
-        const response = await axios.get('https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1'); // Замените на правильный URL для API
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=ВАШ_API_КЛЮЧ`);
         setReviews(response.data.results);
       } catch (error) {
         console.error('Error fetching movie reviews:', error);
