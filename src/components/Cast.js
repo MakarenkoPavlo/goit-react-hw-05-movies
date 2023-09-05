@@ -9,7 +9,7 @@ const Cast = () => {
   useEffect(() => {
     const fetchMovieCast = async () => {
       try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=ВАШ_API_КЛЮЧ`);
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/550?api_key=5cb86857fb7465b5d361c5317d0d0ecf`);
         setCast(response.data.cast);
       } catch (error) {
         console.error('Error fetching movie cast:', error);
