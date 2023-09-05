@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=5cb86857fb7465b5d361c5317d0d0ecf&query=${searchQuery}`);
-      setSearchResults(response.data.results);
-    } catch (error) {
-      console.error('Error searching movies:', error);
+  const handleSearch = useCallback(async () => {
+  try {
+    const apiKey = '13e50a590be3d9744fb067ffed10658e';
+    const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchQuery}`);
+    setSearchResults(response.data.results);
+  } catch (error) {
+    console.error('Error searching movies:', error);
+  }
+}, [searchQuery]);
+  useEffect(() => {
+    if (searchQuery) {
+      handleSearch();
+    } else {
+      setSearchResults([]);
     }
-  };
+  }, [searchQuery, handleSearch]);
 
   return (
     <div>

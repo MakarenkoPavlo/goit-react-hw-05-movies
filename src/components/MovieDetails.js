@@ -9,7 +9,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=5cb86857fb7465b5d361c5317d0d0ecf`);
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=13e50a590be3d9744fb067ffed10658e`);
         setMovieDetails(response.data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
